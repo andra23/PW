@@ -11,7 +11,8 @@
     </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript">
-        $(function () {
+        jQuery(document).ready(function($){
+          $(function () {
             $('.text-box').click(function () {    
             
                 if ($('.text-box').val() =="") { 
@@ -47,6 +48,7 @@
                 }
             });
         });
+    });
     </script>
 </head>
 
