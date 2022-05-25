@@ -10,6 +10,44 @@
     <script src="https://kit.fontawesome.com/9db0d054af.js" crossorigin="anonymous">
     </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript">
+        $(function () {
+            $('.text-box').click(function () {    
+            
+                if ($('.text-box').val() =="") { 
+                   
+                    $('.circle-inner, .gauge-copy').css({
+                        'transform': 'rotate(-45deg)'
+                    
+                    });
+                    $('.gauge-copy').css({
+                        'transform': 'translate(-50%, -50%) rotate(0deg)'
+                    });
+                    $('.percentage').text('');
+                } else if ($('.text-box').val() >= 1 && $('.text-box').val() <= 5) {
+                    var dVal = $(this).val();
+                    var newVal = dVal * 36 - 45;
+                    $('.circle-inner, .gauge-copy').css({
+                        'transform': 'rotate(' + newVal + 'deg)'
+                    });
+                    $('.gauge-copy').css({
+                        'transform': 'translate(-50%, -50%) rotate(' + dVal * 36 + 'deg)'
+                    });
+                    if (5 - parseInt(dVal) === 0) {
+                        $('.percentage1').text(dVal);
+                        $('.percentage').text('Excelent!');
+                    }
+                    else {
+                        $('.percentage1').text(dVal);
+                        $('.percentage').text('Au mai ramas ' + (5 - parseInt(dVal)) + ' stele');
+                        
+                    }
+                } else {
+                    $('.percentage').text('Invalid input value');
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -432,44 +470,7 @@
                             <option value="Mi-a plăcut foarte mult!">Mi-a plăcut foarte mult!</option>
                             <option value="Excelentă,ți-o recomand!">Excelentă,ți-o recomand!</option>
                         </select></label>
-                    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript">
-                        $(function () {
-                            $('.text-box').click(function () {    
-                            
-                                if ($('.text-box').val() =="") { 
-                                   
-                                    $('.circle-inner, .gauge-copy').css({
-                                        'transform': 'rotate(-45deg)'
-                                    
-                                    });
-                                    $('.gauge-copy').css({
-                                        'transform': 'translate(-50%, -50%) rotate(0deg)'
-                                    });
-                                    $('.percentage').text('');
-                                } else if ($('.text-box').val() >= 1 && $('.text-box').val() <= 5) {
-                                    var dVal = $(this).val();
-                                    var newVal = dVal * 36 - 45;
-                                    $('.circle-inner, .gauge-copy').css({
-                                        'transform': 'rotate(' + newVal + 'deg)'
-                                    });
-                                    $('.gauge-copy').css({
-                                        'transform': 'translate(-50%, -50%) rotate(' + dVal * 36 + 'deg)'
-                                    });
-                                    if (5 - parseInt(dVal) === 0) {
-                                        $('.percentage1').text(dVal);
-                                        $('.percentage').text('Excelent!');
-                                    }
-                                    else {
-                                        $('.percentage1').text(dVal);
-                                        $('.percentage').text('Au mai ramas ' + (5 - parseInt(dVal)) + ' stele');
-                                        
-                                    }
-                                } else {
-                                    $('.percentage').text('Invalid input value');
-                                }
-                            });
-                        });
-                    </script>
+                    
                     <label for="field3"><i class="fa-solid fa-star"></i>
                         <input type="number" class="text-box" id="nr_stele" name="nr_stele" min="1" max="5" step="1" value="1"/>
                     </label>
